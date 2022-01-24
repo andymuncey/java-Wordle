@@ -29,9 +29,9 @@ public class Main {
             if (result.isLetterInCorrectPlace()){
                 printGreen(result.getLetter()+"");
             } else if(result.isLetterInWord()){
-                printYELLOW(result.getLetter()+"");
+                printYellow(result.getLetter()+"");
             } else {
-                System.out.print(result.getLetter());
+                printNormal(result.getLetter()+"");
             }
         }
         System.out.println();
@@ -41,12 +41,23 @@ public class Main {
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
     public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
 
-    static void printYELLOW(String text){
-        System.out.print(ANSI_YELLOW_BACKGROUND + text + ANSI_RESET );
+
+    //on Mac / Linux, you can swap the commented line in each of the below methods
+    //to show colour in the console
+
+    static void printYellow(String text){
+        System.out.print("Y");
+        //System.out.print(ANSI_YELLOW_BACKGROUND + text + ANSI_RESET );
     }
 
     static void printGreen(String text){
-        System.out.print(ANSI_GREEN_BACKGROUND + text + ANSI_RESET);
+        System.out.print("G");
+        //System.out.print(ANSI_GREEN_BACKGROUND + text + ANSI_RESET);
+    }
+
+    static void printNormal(String text){
+        System.out.print(" ");
+        //System.out.print(text);
     }
 
 }
