@@ -12,7 +12,7 @@ public class Main {
            System.out.println("Enter guess");
            String guess = scanner.nextLine();
            if (guess.length() == 5) {
-               LetterResult[] results = game.addGuess(guess);
+               Letter[] results = game.addGuess(guess);
                printResults(results);
            } else {
                System.out.println("Guess must be 5 letters");
@@ -24,14 +24,14 @@ public class Main {
 
     }
 
-    static void printResults(LetterResult[] results){
-        for (LetterResult result:results) {
-            if (result.isLetterInCorrectPlace()){
-                printGreen(result.getLetter()+"");
-            } else if(result.isLetterInWord()){
-                printYellow(result.getLetter()+"");
+    static void printResults(Letter[] results){
+        for (Letter result:results) {
+            if (result.isInCorrectPlace()){
+                printGreen(result.getCharacter()+"");
+            } else if(result.isInWord()){
+                printYellow(result.getCharacter()+"");
             } else {
-                printNormal(result.getLetter()+"");
+                printNormal(result.getCharacter()+"");
             }
         }
         System.out.println();

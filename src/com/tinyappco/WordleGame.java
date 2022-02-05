@@ -24,17 +24,21 @@ public class WordleGame {
         return guesses.get(guesses.size()-1).equals(word);
     }
 
-    LetterResult[] addGuess(String guess){
+    Letter[] addGuess(String guess){
 
         guess = guess.toUpperCase(Locale.ROOT);
         guesses.add(guess);
 
-        LetterResult[] results = new LetterResult[5];
+        Letter[] results = new Letter[5];
         for (int i = 0; i < guess.length(); i++) {
             char letter = guess.charAt(i);
-            boolean containsLetter = word.contains(letter+"");
-            boolean correctPlace = word.charAt(i) == guess.charAt(i);
-            results[i] = new LetterResult(letter,containsLetter,correctPlace);
+            Letter.Result result = Letter.Result.WRONG;
+            if (word.charAt(i) == guess.charAt(i)){
+                result = Letter.Result.RIGHT_PLACE;
+            } else if (word.contains(letter+"")){
+                result = Letter.Result.IN_WORD;
+            }
+            results[i] = new Letter(letter,result);
         }
 
         return results;
